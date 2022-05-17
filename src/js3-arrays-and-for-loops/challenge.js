@@ -22,7 +22,14 @@
  */
 
 export const createRecipeString = (ingredientsArr) => {
-  return;
+  let result = "";
+  for (let i = 0; i < ingredientsArr.length; i++) {
+    result = result.concat(ingredientsArr[i]);
+    if (i != ingredientsArr.length -1) {
+      result = result.concat("+");
+    }
+  }
+  return (result);
 };
 
 /**
@@ -33,7 +40,13 @@ export const createRecipeString = (ingredientsArr) => {
  */
 
 export const getFirstAndLastItems = (itemsArr) => {
-  return;
+  const arrayCopy = [...itemsArr];
+  const result = [];
+  result.push(arrayCopy.shift());
+  result.push(arrayCopy.pop());
+  // result.push(itemsArr[0]);
+  // result.push(itemsArr[itemsArr.length-1]);
+  return (result);
 };
 
 /**
@@ -44,7 +57,11 @@ export const getFirstAndLastItems = (itemsArr) => {
  */
 
 export const totalScores = (scoreArr) => {
-  return;
+  let result = 0;
+  for (let i = 0; i < scoreArr.length; i++) {
+    result += scoreArr[i];
+  }
+  return result;
 };
 
 /**
@@ -60,7 +77,11 @@ export const totalScores = (scoreArr) => {
  */
 
 export const totalRange = (rangeMax) => {
-  return;
+  let result = 0;
+  for (let i = 1; i <= rangeMax; i++) {
+    result += i;
+  }
+  return result;
 };
 
 /**
@@ -71,7 +92,9 @@ export const totalRange = (rangeMax) => {
  */
 
 export const moveFirstAndLastItems = (itemsArr) => {
-  return;
+  const newArray = [...itemsArr];
+  newArray.unshift(newArray.pop());
+  return newArray;
 };
 
 /**
@@ -89,7 +112,14 @@ export const moveFirstAndLastItems = (itemsArr) => {
  */
 
 export const removeEvenNumbers = (numberArr) => {
-  return;
+  const newArray = [...numberArr];
+  const result = [];
+  for (let i = 0; i < newArray.length; i++) {
+    if (newArray[i] % 2 != 0) {
+      result.push(newArray[i])
+    } 
+  }
+  return result;
 };
 
 /**
@@ -105,7 +135,18 @@ export const removeEvenNumbers = (numberArr) => {
  */
 
 export const generateAverage = (numberArr) => {
-  return;
+  const newArray = [...numberArr];
+  let result = 0;
+
+  if (newArray.length > 0) {
+    for (let i = 0; i < newArray.length; i++) {
+      result = result + newArray[i];
+    }
+    result = Math.ceil(result / newArray.length);
+  } 
+
+  return result;
+;
 };
 
 /**
@@ -116,7 +157,14 @@ export const generateAverage = (numberArr) => {
  */
 
 export const reverseOrder = (toReverseArr) => {
-  return;
+  const newArray = [...toReverseArr];
+  const result = [];
+
+  for (let i = newArray.length-1; i >= 0; i--) {
+    result.push(newArray[i]);
+  }
+
+  return result;
 };
 
 /**
