@@ -17,7 +17,7 @@
  * @returns {string} John Smith
  */
 export const createFullName = (firstName, lastName) => {
-  /* Write your code here */
+  return (`${firstName} ${lastName}`);
 };
 
 /**
@@ -28,8 +28,12 @@ export const createFullName = (firstName, lastName) => {
  * @param {number} number2 200
  * @returns {number} 100
  */
-export const findSmallestNumber = (/* Write the parameters here */) => {
-  /* Write your code here */
+export const findSmallestNumber = (number1, number2) => {
+  let result = number1;
+  if (number1 > number2) {
+    result =  number2;
+  }
+  return result;
 };
 
 /**
@@ -40,8 +44,8 @@ export const findSmallestNumber = (/* Write the parameters here */) => {
  * @param {number} number2 6
  * @returns {number} 18
  */
-export const multiplyNumbers = (/* Write the parameters here */) => {
-  /* Write your code here */
+export const multiplyNumbers = (number1, number2) => {
+  return (number1 * number2);
 };
 
 /* Intermediate Challenges */
@@ -57,7 +61,13 @@ export const multiplyNumbers = (/* Write the parameters here */) => {
  * @returns {string} "You got a new high score!" | "So close!" | "Better luck next time!"
  */
 export const checkIfNewHighScore = (score, highScore) => {
-  /* Write your code here */
+  let message = "So close!";
+  if (score > highScore) {
+    message = "You got a new high score!";
+  } else if (score < highScore) {
+    message = "Better luck next time!";
+  }
+  return message;
 };
 
 /**
@@ -67,7 +77,8 @@ export const checkIfNewHighScore = (score, highScore) => {
  * @returns {string} "15 degrees celsius is 59 degrees fahrenheit"
  */
 export const celsiusToFahrenheit = (tempInCelsius) => {
-  /* Write your code here */
+  const tempInFahrenheit = tempInCelsius * (9/5) + 32;
+  return (`${tempInCelsius} degrees celsius is ${tempInFahrenheit} degrees fahrenheit`)
 };
 
 /**
@@ -80,7 +91,8 @@ export const celsiusToFahrenheit = (tempInCelsius) => {
  * @returns {number} 47450
  */
 export const calculateLifetimeSupply = (snickersPerDay, age, maxAge) => {
-  /* Write your code here */
+  const daysLeft = (maxAge - age) * 365;
+  return (daysLeft * snickersPerDay);
 };
 
 /* Advanced Challenges */
@@ -100,7 +112,28 @@ export const calculateLifetimeSupply = (snickersPerDay, age, maxAge) => {
  * @returns {string} A - F | Score unavailable
  */
 export const getGrade = (score) => {
-  /* Write your code here */
+  let result = "Score unavailable";
+  switch (true) {
+    case (score >= 0 && score < 40):
+      result = "F";
+      break;
+    case (score >= 40 && score < 50):
+      result = "E";
+      break;
+    case (score >= 50 && score < 60):
+      result = "D";
+      break;
+    case (score >= 60 && score < 70):
+      result = "C";
+      break;
+    case (score >= 70 && score < 80):
+      result = "B";
+      break;
+    case (score > 79):
+      result = "A";
+      break;
+  }
+  return result;
 };
 
 /**
