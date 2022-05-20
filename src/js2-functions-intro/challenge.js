@@ -113,25 +113,27 @@ export const calculateLifetimeSupply = (snickersPerDay, age, maxAge) => {
  */
 export const getGrade = (score) => {
   let result = "Score unavailable";
-  switch (true) {
-    case (score >= 0 && score < 40):
-      result = "F";
-      break;
-    case (score >= 40 && score < 50):
-      result = "E";
-      break;
-    case (score >= 50 && score < 60):
-      result = "D";
-      break;
-    case (score >= 60 && score < 70):
-      result = "C";
-      break;
-    case (score >= 70 && score < 80):
-      result = "B";
-      break;
-    case (score > 79):
-      result = "A";
-      break;
+  if ((typeof score) === "number") {
+    switch (true) {
+      case (score >= 0 && score < 40):
+        result = "F";
+        break;
+      case (score >= 40 && score < 50):
+        result = "E";
+        break;
+      case (score >= 50 && score < 60):
+        result = "D";
+        break;
+      case (score >= 60 && score < 70):
+        result = "C";
+        break;
+      case (score >= 70 && score < 80):
+        result = "B";
+        break;
+      case (score > 79 && score <= 100):
+        result = "A";
+        break;
+    }
   }
   return result;
 };
@@ -143,7 +145,8 @@ export const getGrade = (score) => {
  * @returns {number} 28.27
  */
 export const calculateAreaOfCircle = (radius) => {
-  /* Write your code here */
+  let result = (Math.PI) * (Math.pow(radius, 2));
+  return parseFloat(result.toFixed(2));
 };
 
 /* Expert Challenge */
@@ -164,5 +167,51 @@ export const calculateAreaOfCircle = (radius) => {
  * @param {string} name John
  */
 export const getStudentSummary = (score, name) => {
-  /* Write your code here */
+  let result = "Score unavailable";
+  if ((typeof score) === "number") {
+    switch (true) {
+      case (score >= 0 && score < 40):
+        result = "F";
+        break;
+      case (score >= 40 && score < 50):
+        result = "E";
+        break;
+      case (score >= 50 && score < 60):
+        result = "D";
+        break;
+      case (score >= 60 && score < 70):
+        result = "C";
+        break;
+      case (score >= 70 && score < 80):
+        result = "B";
+        break;
+      case (score > 79 && score <= 100):
+        result = "A";
+        break;
+    }
+  }
+  let message = "";
+  switch(result) {
+    case "A":
+      message = `Congratulations ${name}! You achieved a grade of A.`;
+      break;
+    case "B":
+      message = `Well done ${name}! You achieved a grade of B.`;
+      break;
+    case "C":
+      message = `Nicely done ${name}! You achieved a grade of C.`;
+      break;
+    case "D":
+      message = `That's okay ${name}. You achieved a grade of D.`;
+      break;
+    case "E":
+      message = `Too bad ${name}. You achieved a grade of E.`;
+      break;
+    case "F":
+      message = `Sorry ${name}. You achieved a grade of F. There's always next year.`
+      break;
+    default:
+      message = `My apologies ${name}, there's been an error in processing your grade.`
+  }
+  return message;
 };
