@@ -202,7 +202,7 @@ describe("Testing reverseOrder()", () => {
   });
 });
 
-xdescribe("Testing generateHighscores()", () => {
+describe("Testing generateHighscores()", () => {
   let players, playerScores, highscores;
   beforeEach(() => {
     players = ["Andy", "Bex", "Calum"];
@@ -248,7 +248,7 @@ xdescribe("Testing generateHighscores()", () => {
   });
 });
 
-xdescribe("Testing encryptString()", () => {
+describe("Testing encryptString()", () => {
   it("Should NOT return undefined", () => {
     expect(encryptString("  defined")).toBeDefined();
   });

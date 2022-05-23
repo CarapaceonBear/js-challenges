@@ -172,7 +172,8 @@ export const reverseOrder = (toReverseArr) => {
  */
 
 /**
- * Given two arrays, The first being an array of players and the second being there corresponding score. Loop through them and generate a new array matching the format below.
+ * Given two arrays, The first being an array of players and the second being there corresponding score. 
+ * Loop through them and generate a new array matching the format below.
  *
  * ["P:INDEX PLAYER scored HIGHSCORE","P:INDEX PLAYER scored HIGHSCORE","P:INDEX PLAYER scored HIGHSCORE"]
  *
@@ -186,7 +187,17 @@ export const reverseOrder = (toReverseArr) => {
  */
 
 export const generateHighscores = (playersArr, scoresArr) => {
-  return;
+  let results = []
+  if ((playersArr.length != scoresArr.length) || (playersArr.length == 0)) {
+      return "invalid inputs";
+    }
+  for (let i = 0; i < playersArr.length; i++) {
+    // if (playersArr[i] == "" || scoresArr[i] == "") {
+    //   return "invalid inputs";
+    // }
+    results.push(`P:${i+1} ${playersArr[i]} scored ${scoresArr[i]}`) 
+  }
+  return results;
 };
 
 /**
@@ -216,5 +227,19 @@ export const generateHighscores = (playersArr, scoresArr) => {
 // };
 
 export const encryptString = (toEncrypt) => {
-  return;
+  const partOne = [];
+  const partTwo = [];
+  const partThree = [];
+
+  for (let i = 0; i < toEncrypt.length; i += 3) {
+    partOne.push(toEncrypt[i]);
+    if (toEncrypt.length >= i+1) {
+      partTwo.push(toEncrypt[i+1]);
+    }
+    if (toEncrypt.length >= i+2) {
+      partThree.push(toEncrypt[i+2]);
+    }
+  }
+
+  return (partOne.join("") + partTwo.join("") + partThree.join(""));
 };
