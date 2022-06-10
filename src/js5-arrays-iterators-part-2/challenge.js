@@ -22,7 +22,7 @@
  */
 
 export const totalScoresArr = (scoresArr) => {
-  return;
+  return scoresArr.reduce((sum, current) => sum + current);
 };
 
 /**
@@ -35,7 +35,11 @@ export const totalScoresArr = (scoresArr) => {
  */
 
 export const reverseString = (toReverse) => {
-  return;
+  let result = [];
+  toReverse.split("").forEach((letter) => {
+    result.unshift(letter);
+  });
+  return result.join("");
 };
 
 /**
@@ -47,8 +51,8 @@ export const reverseString = (toReverse) => {
  * @return {string[]} ["b", "b", "b", "g", "l", "n", "x", "x"]
  */
 
-export const sortCharactersAlphabetically = (charcterArr) => {
-  return;
+export const sortCharactersAlphabetically = (characterArr) => {
+  return characterArr.map(letter => letter.toLowerCase()).sort();
 };
 
 /**
@@ -63,7 +67,8 @@ export const sortCharactersAlphabetically = (charcterArr) => {
  */
 
 export const sortNumbersHighToLow = (numberArr) => {
-  return;
+  let result = [...numberArr].sort((a, b) => (b - a));
+  return result;
 };
 
 /**
@@ -94,7 +99,12 @@ export const checkItemInstock = (toCheck) => {
     "blueberry",
     "melon",
   ];
-  return;
+  const index = stockList.indexOf(toCheck);
+  if (index === -1) {
+    return `Sorry ${toCheck} is not instock.`
+  } else {
+    return `${toCheck} is instock, it is on aisle ${index}.`
+  }
 };
 
 /**
@@ -108,7 +118,14 @@ export const checkItemInstock = (toCheck) => {
  */
 
 export const checkPrimaryColours = (coloursArr) => {
-  return;
+  const primaryColours = ["red", "blue", "yellow"];
+  let isAllPrimary = true;
+  coloursArr.forEach((colour) => {
+    if (! primaryColours.includes(colour)) {
+      isAllPrimary = false;
+    }
+  })
+  return isAllPrimary;
 };
 
 /**
@@ -125,7 +142,15 @@ export const checkPrimaryColours = (coloursArr) => {
  */
 
 export const checkStringPalindrome = (stringOne) => {
-  return;
+  let result = [];
+  stringOne.split("").forEach((letter) => {
+    result.unshift(letter);
+  });
+  if (result.join("") === stringOne) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 /**
@@ -139,7 +164,9 @@ export const checkStringPalindrome = (stringOne) => {
  */
 
 export const totalNestedScoresArr = (scoresArr) => {
-  return;
+  return scoresArr.map((array, index) => {
+    return scoresArr[index].reduce((a, b) => (a + b))
+  });
 };
 
 /**
@@ -172,5 +199,24 @@ export const totalNestedScoresArr = (scoresArr) => {
  */
 
 export const encryptString = (toEncrypt) => {
-  return;
+  if (toEncrypt.length === 0) {
+    return toEncrypt;
+  }
+
+  const encryptedArrays = [[],[],[]];
+
+  for (let i = 0; i < toEncrypt.length; i += 3) {
+     encryptedArrays[0].push(toEncrypt[i]);
+     if (toEncrypt.length > i+1) {
+       encryptedArrays[1].push(toEncrypt[i+1]);
+     }
+     if (toEncrypt.length > i+2) {
+       encryptedArrays[2].push(toEncrypt[i+2]);
+     }
+   }
+ 
+   let singleArray = encryptedArrays.map((array) => {
+       return array.reduce((a, b) => (a + b))
+   })
+   return singleArray.reduce((a, b) => (a + b))
 };
